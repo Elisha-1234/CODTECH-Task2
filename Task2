@@ -1,0 +1,47 @@
+TASK TWO: VULNERABILITY SCANNING TOOL 
+
+Create a simple vulnerability scanning tool that scans a network or website
+for common security vulnerabilities such as open ports, outdated software
+versions, and misconfigurations.
+
+
+
+import nmap
+import requests
+from bs4 import BeautifulSoup
+
+def port_scan(target):
+    nm = nmap.PortScanner()
+    nm.scan(target, '1-1024')
+    open_ports = nm[target]['tcp'].keys()
+    return open_ports
+
+def outdated_software(target):
+    url = f"http://{target}"
+    response = requests.get(url)
+    soup = BeautifulSoup(response.content, 'html.parser')
+    version_tags = soup.find_all('meta', attrs={'name': 'version'})
+    outdated_versions = []
+    for tag in version_tags:
+        version = tag['content']
+        # Check for outdated versions using a database or API
+        if is_outdated(version):
+            outdated_versions.append(version)
+    return outdated_versions
+
+def misconfigurations(target):
+    url = f"http://{target}"
+    response = requests.get(url)
+    soup = BeautifulSoup(response.content, 'html.parser')
+    dir_listing = soup.find('a', attrs={'href': '/'})
+    weak_ssl = response.headers['Server'] == 'Apache/2.4.41'
+    return dir_listing, weak_ssl
+
+def scan_target(target):
+    open_ports = port_scan(target)
+    outdated_versions = outdated_software(target)
+    dir_listing, weak_ssl = misconfigurations(target)
+    print(f"Open Ports: {open_ports}")
+    print(f"Outdated Software: {outdated_versions}")
+    print(f"Directory Listing: {dir_listing}")
+    print(f"Weak SSL/TLS: {weak_ssl}")
