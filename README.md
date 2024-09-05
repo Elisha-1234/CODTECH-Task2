@@ -7,7 +7,7 @@ Mentor : Neela Santhosh Kumar
 
 Overview of this project 
 
-
+Project name : VULNERABILITY SCANNING TOOL 
 
 Task: Create a simple vulnerability scanning tool that scans a network or website for common security vulnerabilities.
 
