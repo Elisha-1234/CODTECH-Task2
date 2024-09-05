@@ -1,3 +1,14 @@
+Name : Elisha E Cephas
+Company : CODTECH IT SOLUTIONS 
+ID : CT08DS7157
+Domain : Cyber Security & Ethical Hacking 
+Duration : August to September 2024
+Mentor : Neela Santhosh Kumar 
+
+Overview of this project 
+
+
+
 Task: Create a simple vulnerability scanning tool that scans a network or website for common security vulnerabilities.
 
 Objective: Identify potential security risks in a target network or website by detecting open ports, outdated software versions, and misconfigurations.
